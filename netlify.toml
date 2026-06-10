@@ -1,0 +1,30 @@
+# Netlify configuration for the Power Up Bots flipbook.
+#
+# This is a pure static site (plain HTML/CSS/JS) — there is no build step.
+# The site root contains index.html, which redirects to /story/ebook.html.
+# Media lives in "Power up bots/" and is referenced from /story/ebook.html
+# via relative paths ("../Power up bots/..."), so the whole repo root must
+# be published as-is to keep those relative paths valid.
+
+[build]
+  # Publish the repository root unchanged.
+  publish = "."
+  # No build command — nothing to compile.
+  command = ""
+
+# Long-cache the heavy, content-addressed media so repeat visits and
+# page flips are smooth. HTML stays uncached so updates show immediately.
+[[headers]]
+  for = "/Power up bots/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/story/*.mp3"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/story/fish rescue html/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
