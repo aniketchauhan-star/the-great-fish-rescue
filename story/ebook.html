@@ -7048,15 +7048,15 @@
               return;
             }
 
-            /* Video story page: wait for the main video to finish, then 3s. */
+            /* Video story page: wait for the main video to finish, then 1.5s. */
             if(video){
               if(video.dataset.hasEnded === 'true'){
-                navRevealTimer = setTimeout(showNavForCurrentPage, 3000);
+                navRevealTimer = setTimeout(showNavForCurrentPage, 1500);
               } else {
                 watchedVideo   = video;
                 watchedHandler = function(){
                   detachWatchedVideo();
-                  navRevealTimer = setTimeout(showNavForCurrentPage, 3000);
+                  navRevealTimer = setTimeout(showNavForCurrentPage, 1500);
                 };
                 video.addEventListener('ended', watchedHandler);
               }
